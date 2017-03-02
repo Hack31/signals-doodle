@@ -46,8 +46,8 @@ public final class Graficas extends javax.swing.JFrame {
         modularPM.setTipoSeñalModuladora(TpSeñalModuladora);
         modularPM.setTipoSeñalPortadora(TpSeñalPortadora);
 
-        Formulas formula = new Formulas(fm, vm, fc, vc, m, m);
-        modularFM.setSensibilidad(formula.SensibilidadKl());
+        Formulas formula = new Formulas(fm, vm, m, m);
+        modularFM.setSensibilidad(formula.kFM());
 
         for (int j = 1; j <= (tiempo * 100); j++) { //al aumentar el pow de abajo agregarle un 0 mas al 100 (condicionar parada)
             t = j / Math.pow(10, 5); //Aumenta los puntos a Evaluar (Renderizado) :v
@@ -165,7 +165,7 @@ public final class Graficas extends javax.swing.JFrame {
         final double[] espectros;
         final double[] frecuencias;
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset(); //Barchart
-        Formulas formula = new Formulas(fm, vm, fc, vc, m, m);
+        Formulas formula = new Formulas(fm, vm, m, m);
         FuncionBessel bessel = new FuncionBessel(m, vc);
         int nbandas = bessel.ConjuntoBandasLateralesSignificativas();
         espectros = new double[(nbandas * 2) + 1];   //Arreglo que contendran los espectros
@@ -199,10 +199,10 @@ public final class Graficas extends javax.swing.JFrame {
 
         if (TipoDeModulacion.equals("FM")) {
             TextPaneResultados.setText(TextPaneResultados.getText() + "Desviacion delta F = " + formula.DesviacionFrecuencia() + "\n");
-            TextPaneResultados.setText(TextPaneResultados.getText() + "Sensibilidad Kl = " + formula.SensibilidadKl() + "\n");
+            TextPaneResultados.setText(TextPaneResultados.getText() + "Sensibilidad Kl = " + formula.kFM() + "\n");
         } else {
-            TextPaneResultados.setText(TextPaneResultados.getText() + "Desviacion de Fase = " + formula.DesviacionFase() + "\n");
-            TextPaneResultados.setText(TextPaneResultados.getText() + "Sensibilidad K = " + formula.SensibilidadK() + "\n");  //acomodar esta malo 
+            TextPaneResultados.setText(TextPaneResultados.getText() + "Desviacion de Fase = " + formula.mPM() + "\n");
+            TextPaneResultados.setText(TextPaneResultados.getText() + "Sensibilidad K = " + formula.kFM() + "\n");  //acomodar esta malo 
         }
         TextPaneDatosSeñal.setText("DATOS DE LAS SEÑALES\n");
         TextPaneDatosSeñal.setText(TextPaneDatosSeñal.getText() + " vm = " + vm + " (v)\n");
