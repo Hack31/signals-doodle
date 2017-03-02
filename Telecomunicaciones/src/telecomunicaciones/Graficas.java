@@ -202,7 +202,7 @@ public final class Graficas extends javax.swing.JFrame {
             TextPaneResultados.setText(TextPaneResultados.getText() + "Sensibilidad Kl = " + formula.kFM() + "\n");
         } else {
             TextPaneResultados.setText(TextPaneResultados.getText() + "Desviacion de Fase = " + formula.mPM() + "\n");
-            TextPaneResultados.setText(TextPaneResultados.getText() + "Sensibilidad K = " + formula.kFM() + "\n");  //acomodar esta malo 
+            TextPaneResultados.setText(TextPaneResultados.getText() + "Sensibilidad K = " + formula.kPM() + "\n");  //acomodar esta malo 
         }
         TextPaneDatosSeñal.setText("DATOS DE LAS SEÑALES\n");
         TextPaneDatosSeñal.setText(TextPaneDatosSeñal.getText() + " vm = " + vm + " (v)\n");
